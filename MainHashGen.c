@@ -3,20 +3,33 @@
 #include "HashingGen.h"
 #include <string.h>
 
+// falta a main tudo e dar uma revisada na biblioteca tá quase tudo completo já
+
 int main(){
     int mat;
     int opcao;
-    Professor *p = (Professor*)malloc (sizeof(Professor));
-    Aluno *a = (Aluno*) malloc (sizeof())
-
+    Pessoa *p;
 
     while(opcao != 4){
-        switch (opcao)
-    {
+        switch (opcao){
         case 1:
-            if()
-            printf("Qual elemento deseja inserir?");
 
+
+            break;
+
+        case 2:
+
+
+            break;
+
+        case 3:
+
+
+            break;
+
+        case 4:
+
+            printf("Saindo...");
             break;
         
         default:

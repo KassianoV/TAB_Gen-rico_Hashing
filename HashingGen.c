@@ -104,6 +104,41 @@ int AcharPosicao(char *nomeArq, int key,int sizeObj){
     return pos;
 }
 
+int BuscarObj(char * nomeArq, int key, void *resp, int sizeObj){
+    Pessoa aux;
+    FILE *arq = fopen (nomeArq, "rb");
+    int i;
+
+    for(i=0; i<N; i++){
+        fread(&aux, sizeof(aux), 1, arq);
+
+        if(aux.chave == key){
+            resp = (void*) malloc(sizeObj);
+            memcpy(resp, aux.item, sizeObj);
+            fclose(arq);
+            return 1;
+        }
+    }
+    return 0;
+    fclose(arq);
+}
+
+void leituraCompleta(char * nomeArq){
+    Pessoa aux;
+    FILE *arq = fopen(nomeArq, "rb");
+    int i;
+
+    for (i=0; i<N; i++){
+        fread(&aux, sizeof(aux), 1, arq);
+        if(aux.tipo != 1)
+            printf("%i\n", aux.chave);
+        else    
+            printf("Disponivel - \n");
+    }
+    printf("\n");
+    fclose(arq);
+}
+
 void Printa(Pessoa *p, int size){
     for(int i=0;i<size;i++){
         if(p[i].tipo==1){
