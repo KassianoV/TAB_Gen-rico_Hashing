@@ -2,6 +2,11 @@
 #define HashGen_H
 
 typedef struct aluno *Aluno;
+/*
+Quando você define o typedef com
+ struct algo *Algo
+ Esse * simboliza que o Algo, é um ponteiro de struct algo, então lá na main quando vc chamar vc só chama Algo ;)
+*/
 typedef struct professor *Professor;
 typedef struct pessoa Pessoa;
 

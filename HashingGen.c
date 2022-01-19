@@ -4,12 +4,7 @@
 #include<string.h>
 #define N 11
 
-struct aluno {
-    int matricula;
-    char nome[100];
-    char email[100];
-    float CR;
-};
+
 
 struct professor{
     int matricula;
@@ -42,30 +37,29 @@ void InicializaArq(char * nomeArq, void *obj, int sizeObj){
         fclose(arq);
     }
 }
-//lista l[100]; // bem melhor 
-int hash1 (Pessoa item, int size){
-    if(item.tipo == 1){
-        Aluno al=(Aluno) item.item;
-        return al->matricula%size;
-    }else if(item.tipo==2){
-        Professor prof=(Professor) item.item;
-        return prof->matricula%size;
-    }
-}
+// int hash1 (Pessoa item, int size){
+//     if(item.tipo == 1){
+//         Aluno al=(Aluno) item.item;
+//         return al->matricula%size;
+//     }else if(item.tipo==2){
+//         Professor prof=(Professor) item.item;
+//         return prof->matricula%size;
+//     }
+// }
 
-int hash2(Pessoa p, int size){
-    int key;
-    if(p.tipo==1){
-        Aluno al=(Aluno) p.item;
-        key=size-2-(al->matricula%(size-2));
-    }else if(p.tipo==2){
-        Professor prof=(Professor) p.item;
-        key=size-2-(prof->matricula%(size-2));
-    }
-    return key;
-}
+// int hash2(Pessoa p, int size){
+//     int key;
+//     if(p.tipo==1){
+//         Aluno al=(Aluno) p.item;
+//         key=size-2-(al->matricula%(size-2));
+//     }else if(p.tipo==2){
+//         Professor prof=(Professor) p.item;
+//         key=size-2-(prof->matricula%(size-2));
+//     }
+//     return key;
+// }
 
-void Inserir(char *nomeArq, int key, void *objeto, int sizeObj){//tipo define que tipo de dado é 
+void Inserir(char *nomeArq, int key, void *objeto, int sizeObj){
     int pos = AcharPosicao(nomeArq, key, sizeObj);
     Pessoa aux;
 
@@ -104,24 +98,24 @@ int AcharPosicao(char *nomeArq, int key,int sizeObj){
     return pos;
 }
 
-void Printa(Pessoa *p, int size){
-    for(int i=0;i<size;i++){
-        if(p[i].tipo==1){
-            Aluno al=(Aluno) p[i].item;
-            printf("\nAluno\n");
-            printf("%d\n",al->matricula);
-            printf("%s\n",al->nome);
-            printf("%s\n",al->email);
-            printf("%.2f\n",al->CR);
-        }else if(p[i].tipo==2){
-            Professor prof=(Professor) p[i].item;//esqueci do = kkkkkkkkkkkkkkkk
-            printf("\nProfessor\n");
-            printf("%d\n",prof->matricula);
-            printf("%s\n",prof->nome);
-            printf("%.2lf\n",prof->salario);
-        }
-    }
-}
+// void Printa(Pessoa *p, int size){
+//     for(int i=0;i<size;i++){
+//         if(p[i].tipo==1){
+//             Aluno al=(Aluno) p[i].item;
+//             printf("\nAluno\n");
+//             printf("%d\n",al->matricula);
+//             printf("%s\n",al->nome);
+//             printf("%s\n",al->email);
+//             printf("%.2f\n",al->CR);
+//         }else if(p[i].tipo==2){
+//             Professor prof=(Professor) p[i].item;//esqueci do = kkkkkkkkkkkkkkkk
+//             printf("\nProfessor\n");
+//             printf("%d\n",prof->matricula);
+//             printf("%s\n",prof->nome);
+//             printf("%.2lf\n",prof->salario);
+//         }
+//     }
+// }
 
 
 
