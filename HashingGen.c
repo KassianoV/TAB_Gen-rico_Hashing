@@ -151,7 +151,6 @@ void leituraCompleta(char * nomeArq){
 //         }
 //     }
 // }
->>>>>>> ba9a94f85c0ad6124eb0e34293354e84a608ebe3
 
 
 
