@@ -3,6 +3,7 @@
 #include "HashingGen.h"
 #include <string.h>
 
+<<<<<<< HEAD
 struct aluno {
     int matricula;
     char nome[100];
@@ -35,6 +36,14 @@ Aluno CriaAluno(){
     
     printf("\nInforme o email do aluno: ");
     gets(al->email);
+=======
+// falta a main tudo e dar uma revisada na biblioteca tá quase tudo completo já
+
+int main(){
+    int mat;
+    int opcao;
+    Pessoa *p;
+>>>>>>> ba9a94f85c0ad6124eb0e34293354e84a608ebe3
 
     if(al->email[strlen(al->email)-1]=='\n')
         al->email[strlen(al->email)-1]='\0';
@@ -53,6 +62,7 @@ int main(){
     //Professor p = (Professor) malloc (sizeof(struct professor));
     
     while(opcao != 4){
+<<<<<<< HEAD
         opcao=menu();
         switch (opcao){
             case 1:
@@ -71,6 +81,31 @@ int main(){
             default:
                 printf("Digite uma opcao valida!\n");
                 break;
+=======
+        switch (opcao){
+        case 1:
+
+
+            break;
+
+        case 2:
+
+
+            break;
+
+        case 3:
+
+
+            break;
+
+        case 4:
+
+            printf("Saindo...");
+            break;
+        
+        default:
+            break;
+>>>>>>> ba9a94f85c0ad6124eb0e34293354e84a608ebe3
         }
     }
 
