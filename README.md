@@ -16,6 +16,7 @@ gcc -o MainAluno.exe HashingGen.o MainAluno.o
 *  ##### gcc -c HashingGen.c: Criando HashingGen.o
 *  ##### gcc -c MainAluno.c: Criando MainAluno.o
 * ##### gcc -o MainAluno.exe HashingGen.o MainAluno.o: Criando executável
+</br>
 
 
 
