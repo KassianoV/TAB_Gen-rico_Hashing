@@ -27,10 +27,6 @@ void InicializaArq(char *nomeArq, void *obj, int sizeObj){
     fclose(arq);
 }
 
-int hashArq(char *nomeArq, int mat){
-    
-}
-
 int hash1 (Elemento item, int size){
     return item->key%size;
 }
@@ -88,8 +84,29 @@ int BuscarObj(char * nomeArq, int key, void *resp, int sizeObj){
 }
 */
 
-void BuscarObj(char nomeArq, int key, void*resp, int sizeObj){
-    int pos = 
+int BuscarObj(char nomeArq, int key, void*resp, int sizeObj){
+    int pos = hash(key, 20);
+    int achou = 0;
+    Elemento aux;
+    FILE *arq = fopen(nomeArq, "rb");
+    fseek(arq, pos * sizeof(Elemento), SEEK_SET);
+    fread(&aux, sizeof(Elemento), 1,arq);
+    while(aux->key == key && achou ==0) {
+        if(aux->item == resp)
+            achou =1;
+        else {
+            pos = (pos+1) %20;
+            fseek(arq, pos*sizeof(Elemento), SEEK_SET);
+            fread(&aux, sizeof(Elemento), 1, arq);
+        }
+    }
+    fclose(arq);
+        if(achou)
+            return 1;
+        else
+            return 0;
+    }
+    return 0;
 }
 
 void leituraCompleta(char * nomeArq){
