@@ -17,5 +17,6 @@ gcc -o MainAluno.exe HashingGen.o MainAluno.o
 </br>
 
 <h4>Substituição de Objeto que deseja utilizar</h4>
-<p> Pode trocar  <strong>MainAluno.c</strong> e <strong>MainAluno.o</strong>  por <strong>MainProfessor.c</strong> e <strong>MainProfessor.o</strong> dependendo do que você deseja compilar
+<p> Pode trocar  <strong>MainAluno.c</strong> e <strong>MainAluno.o</strong>  por <strong>MainProfessor.c</strong> e <strong>MainProfessor.o</strong> dependendo do que você deseja compilar<br/>
+
 Se tiver no Linux Troque o <strong>MainAluno.exe_ => _MainAluno_</strong>

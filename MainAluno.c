@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "HashingGen.h"
 #include <string.h>
+
 typedef struct aluno {
     int matricula;
     char nome[100];

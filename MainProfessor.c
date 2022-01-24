@@ -30,8 +30,8 @@ Professor *CriaProfessor(){
 int menu(){
     int opc;
     printf("\nEscolha uma opcao:\n");
-    printf("[1] Adicionar um aluno\n");
-    printf("[2] Imprimir informacoes de um Aluno\n");
+    printf("[1] Adicionar um professor\n");
+    printf("[2] Imprimir informacoes de um professor\n");
     printf("[3] Imprimir Tabela Hash\n");
     printf("[4] Encerrar\n");
     scanf("%d",&opc);
@@ -64,7 +64,7 @@ int main(){
                     printf("Os dados do professor sao:\n");
                     printf("Matricula: %d\nNome: %s\nEmail: %d",pf->matricula, pf->nome, pf->salario);
                 }else
-                    printf("Nao ha um aluno com matricula %d no registro",mat);
+                    printf("Nao ha um professor com matricula %d no registro",mat);
                 break;
             case 3:
                 printf("\n");
