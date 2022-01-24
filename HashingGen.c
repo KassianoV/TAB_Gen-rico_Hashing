@@ -30,6 +30,7 @@ void InicializaArq(char *nomeArq, void *obj, int sizeObj){
 int hashArq(char *nomeArq, int mat){
     
 }
+
 int hash1 (Elemento item, int size){
     return item->key%size;
 }
@@ -66,9 +67,7 @@ void Inserir(char *nomeArq, int key, void *objeto, int sizeObj){
     fwrite(&aux, sizeof(struct elemento),1,arq);
     fclose(arq);
 }
-
-
-
+/*
 int BuscarObj(char * nomeArq, int key, void *resp, int sizeObj){
     Elemento aux;
     FILE *arq = fopen (nomeArq, "rb");
@@ -86,6 +85,11 @@ int BuscarObj(char * nomeArq, int key, void *resp, int sizeObj){
     }
     fclose(arq);
     return 0;
+}
+*/
+
+void BuscarObj(char nomeArq, int key, void*resp, int sizeObj){
+    int pos = 
 }
 
 void leituraCompleta(char * nomeArq){
