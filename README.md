@@ -17,5 +17,7 @@ gcc -o MainAluno.exe HashingGen.o MainAluno.o
 *  ##### gcc -c MainAluno.c: Criando MainAluno.o
 * ##### gcc -o MainAluno.exe HashingGen.o MainAluno.o: Criando executável
 
+
+
 ##### Pode trocar _MainAluno.c_ e _MainAluno.o_ por _MainProfessor.c_ e _MainProfessor.o_ dependendo do que você deseja compilar
 ##### Se tiver no Linux Troque o _MainAluno.exe_ => _MainAluno_

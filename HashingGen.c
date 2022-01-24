@@ -116,22 +116,3 @@ void leituraCompleta(char * nomeArq){
     printf("\n");
     fclose(arq);
 }
-
-// void Printa(Elemento *p, int size){
-//     for(int i=0;i<size;i++){
-//         if(p[i].tipo==1){
-//             Aluno al=(Aluno) p[i].item;
-//             printf("\nAluno\n");
-//             printf("%d\n",al->matricula);
-//             printf("%s\n",al->nome);
-//             printf("%s\n",al->email);
-//             printf("%.2f\n",al->CR);
-//         }else if(p[i].tipo==2){
-//             Professor prof=(Professor) p[i].item;//esqueci do = kkkkkkkkkkkkkkkk
-//             printf("\nProfessor\n");
-//             printf("%d\n",prof->matricula);
-//             printf("%s\n",prof->nome);
-//             printf("%.2lf\n",prof->salario);
-//         }
-//     }
-// }
