@@ -71,7 +71,7 @@ int AcharPosicao(char *nomeArq, int key,int sizeObj){
     fseek(arq, pos * sizeof(aux), SEEK_SET);
     fread(&aux, sizeof(aux), 1,arq);
 
-    while (aux->tipo == 0){
+    while (aux->key != -1){
         pos = (pos + deslocamento) % N;
         fseek(arq, pos *sizeof(aux), SEEK_SET);
         fread(&aux, sizeof(aux),1, arq);
@@ -95,8 +95,8 @@ int BuscarObj(char * nomeArq, int key, void *resp, int sizeObj){
             return 1;
         }
     }
-    return 0;
     fclose(arq);
+    return 0;
 }
 
 void leituraCompleta(char * nomeArq){
@@ -106,7 +106,7 @@ void leituraCompleta(char * nomeArq){
 
     for (i=0; i<N; i++){
         fread(&aux, sizeof(aux), 1, arq);
-        if(aux->tipo != 1)
+        if(aux->key != -1)
             printf("%i\n", aux->key);
         else    
             printf("Disponivel - \n");
