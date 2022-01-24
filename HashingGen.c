@@ -34,28 +34,14 @@ int hash1 (Elemento item, int size){
     return item->key%size;
 }
 
-int hash2(Elemento p, int size){
-    int key;
-    key=size-2-(p->key%(size-2));
-    return key;
-}
-
 int AcharPosicao(char *nomeArq, int key,int sizeObj){
     Elemento aux;
-    printf("a\n");
-    //aux->item = (void*) malloc(sizeObj);
-    printf("a\n");
     int pos = hash1(aux ,N);
-    int deslocamento =  hash2(aux, N);
-    printf("a %d\n",pos);
     FILE *arq = fopen(nomeArq, "rb");
-    printf("a\n");
     fseek(arq, pos * sizeof(struct elemento), SEEK_SET);
-    printf("a\n");
     fread(&aux, sizeof(struct elemento), 1,arq);
-    printf("a\n");
     while (aux->key != -1){
-        pos = (pos + deslocamento) % N;
+        pos = (pos+1) % N;
         fseek(arq, pos *sizeof(struct elemento), SEEK_SET);
         fread(&aux, sizeof(struct elemento),1, arq);
     }
@@ -70,9 +56,9 @@ void Inserir(char *nomeArq, int key, void *objeto, int sizeObj){
 
     FILE *arq = fopen(nomeArq, "r+b");
     printf("a\n");
-    //aux->item = (void*) malloc(sizeObj);
-    //memcpy(aux->item, objeto, sizeObj);
-    aux->item=objeto;
+    aux->item = (void*) malloc(sizeObj);
+    memcpy(aux->item, objeto, sizeObj);
+    //aux->item=objeto;
     printf("a\n");
     aux->key = key;
     fseek(arq, pos*sizeof(struct elemento), SEEK_SET);
