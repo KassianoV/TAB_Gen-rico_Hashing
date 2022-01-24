@@ -1,0 +1,13 @@
+.vscode
+
+*.o
+
+MainAluno
+
+HashingGen.o
+
+MainAluno.o
+
+MainProfessor.o
+
+MainProfessor
