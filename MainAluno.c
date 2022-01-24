@@ -16,13 +16,13 @@ aluno *CriaAluno(){
     getchar();
 
     printf("\nInforme o nome do aluno: ");
-    gets(al->nome);
+    fgets(al->nome,100,stdin);
     
     if(al->nome[strlen(al->nome)-1]=='\n')
         al->nome[strlen(al->nome)-1]='\0';
     
     printf("\nInforme o email do aluno: ");
-    gets(al->email);
+    fgets(al->email,100,stdin);
 
     if(al->email[strlen(al->email)-1]=='\n')
         al->email[strlen(al->email)-1]='\0';
@@ -44,12 +44,18 @@ int menu(){
     return opc;
 }
 
+aluno *InicializaAluno(aluno *al){
+    al=(aluno *) malloc(sizeof(aluno));
+}
+
 int main(){
     int mat;
-    int opcao=0;
+    int opcao=0,aux;
     char nomeArq[13];
     strcpy(nomeArq,"registro.bin");
-    aluno *al;
+    aluno *al=InicializaAluno(al);
+    InicializaArq(nomeArq, al,sizeof(aluno));
+    
     //Professor p = (Professor) malloc (sizeof(struct professor));
     
     while(opcao != 4){
@@ -62,9 +68,14 @@ int main(){
             case 2:
                 printf("\nDigite o numero da matricula do aluno: ");
                 scanf("%d",&mat);
-                al=(aluno *) BuscaElemento(nomeArq,mat);
+                if(BuscarObj(nomeArq,mat,al,sizeof(struct aluno))==1){
+                    printf("Os dados do aluno sao:\n");
+                    printf("Matricula: %d\nNome: %s\nEmail: %s\nCR: %.2f",al->matricula,al->nome,al->email,al->CR);
+                }else
+                    printf("Nao ha um aluno com matricula %d no registro",mat);
                 break;
             case 3:
+                leituraCompleta(nomeArq);
                 break;
             case 4:
                 break;

@@ -3,11 +3,6 @@
 #include"HashingGen.h"
 #include<string.h>
 #define N 11
-typedef struct elemento{
-    int tipo,key;
-    void *item;
-}Elemento;
-
 
 typedef struct elemento{ 
     int tipo;   // Tipo 1 aluno e 2 prof
@@ -16,12 +11,13 @@ typedef struct elemento{
 }*Elemento;
 
 // Ok
-void InicializaArq(char * nomeArq, void *obj, int sizeObj){
+void InicializaArq(char *nomeArq, void *obj, int sizeObj){
     FILE *arq = fopen(nomeArq,"wb");
-    Elemento a;
+    Elemento a=(Elemento) malloc(sizeof(struct elemento));
 
-    a->item = (void*) malloc(sizeObj);
-    memcpy(a->item, obj, sizeObj);
+    //a->item = (void*) malloc(sizeObj);
+    //memcpy(a->item, obj, sizeObj);
+    a->item=obj;
     a->tipo=-1;
     a->key=-1;
 
@@ -44,9 +40,33 @@ int hash2(Elemento p, int size){
     return key;
 }
 
+int AcharPosicao(char *nomeArq, int key,int sizeObj){
+    Elemento aux;
+    printf("a\n");
+    //aux->item = (void*) malloc(sizeObj);
+    printf("a\n");
+    int pos = hash1(aux ,N);
+    int deslocamento =  hash2(aux, N);
+    printf("a %d\n",pos);
+    FILE *arq = fopen(nomeArq, "rb");
+    printf("a\n");
+    fseek(arq, pos * sizeof(struct elemento), SEEK_SET);
+    printf("a\n");
+    fread(&aux, sizeof(struct elemento), 1,arq);
+    printf("a\n");
+    while (aux->key != -1){
+        pos = (pos + deslocamento) % N;
+        fseek(arq, pos *sizeof(struct elemento), SEEK_SET);
+        fread(&aux, sizeof(struct elemento),1, arq);
+    }
+    fclose(arq);
+    return pos;
+}
+
 void Inserir(char *nomeArq, int key, void *objeto, int sizeObj){
     int pos = AcharPosicao(nomeArq, key, sizeObj);
-    Elemento aux;
+    printf("\n%d\n",pos);
+    Elemento aux=(Elemento) malloc(sizeof(struct elemento));
 
     FILE *arq = fopen(nomeArq, "r+b");
 
@@ -54,31 +74,13 @@ void Inserir(char *nomeArq, int key, void *objeto, int sizeObj){
     memcpy(aux->item, objeto, sizeObj);
 
     aux->key = key;
-    fseek(arq, pos*sizeof(aux), SEEK_SET);
+    fseek(arq, pos*sizeof(struct elemento), SEEK_SET);
 
-    fwrite(&aux, sizeof(aux),1,arq);
+    fwrite(&aux, sizeof(struct elemento),1,arq);
     fclose(arq);
 }
 
-int AcharPosicao(char *nomeArq, int key,int sizeObj){
-    Elemento aux;
-    aux->item = (void*) malloc(sizeObj);
 
-    int pos = hash1(aux ,N);
-    int deslocamento =  hash2(aux, N);
-
-    FILE *arq = fopen(nomeArq, "rb");
-    fseek(arq, pos * sizeof(aux), SEEK_SET);
-    fread(&aux, sizeof(aux), 1,arq);
-
-    while (aux->key != -1){
-        pos = (pos + deslocamento) % N;
-        fseek(arq, pos *sizeof(aux), SEEK_SET);
-        fread(&aux, sizeof(aux),1, arq);
-    }
-    fclose(arq);
-    return pos;
-}
 
 int BuscarObj(char * nomeArq, int key, void *resp, int sizeObj){
     Elemento aux;
@@ -86,7 +88,7 @@ int BuscarObj(char * nomeArq, int key, void *resp, int sizeObj){
     int i;
 
     for(i=0; i<N; i++){
-        fread(&aux, sizeof(aux), 1, arq);
+        fread(&aux, sizeof(struct elemento), 1, arq);
 
         if(aux->key == key){
             resp = (void*) malloc(sizeObj);
@@ -105,7 +107,7 @@ void leituraCompleta(char * nomeArq){
     int i;
 
     for (i=0; i<N; i++){
-        fread(&aux, sizeof(aux), 1, arq);
+        fread(&aux, sizeof(struct elemento), 1, arq);
         if(aux->key != -1)
             printf("%i\n", aux->key);
         else    
