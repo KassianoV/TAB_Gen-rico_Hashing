@@ -1,22 +1,26 @@
-<h1> Seminário de implementação </h1>
-<h2> Tema:TAD Hashing Genérico </h2>
+# Seminário TAD Hashng Genérico 
+<p>
+    Essa Implementação que segue a divisão de uma TAD (Tipo de Abstração de Dados) Genérica e a utilização de Hashing para tratar o mecanismo de colisões 
+</p>
 
-<h4> Grupo: Gabriel Silva, João Henrique e Kassiano Vieira</h4>
-<br/>
-<h4>Compilando pelo gcc:</h4>
+# Linguagem 
+<p>
+Para a implementação desse trabalho foi escolhida a linguagem C
+</p><br/>
 
+# Uso
+Compilando pelo gcc:
 ~~~ bash
 gcc -c HashingGen.c
 gcc -c MainAluno.c
 gcc -o MainAluno.exe HashingGen.o MainAluno.o
 ~~~
 
-*  ##### gcc -c HashingGen.c: Criando HashingGen.o
-*  ##### gcc -c MainAluno.c: Criando MainAluno.o
-* ##### gcc -o MainAluno.exe HashingGen.o MainAluno.o: Criando executável
-</br>
-
-<h4>Substituição de Objeto que deseja utilizar</h4>
+<li>gcc -c HashingGen.c: Criando HashingGen.o
+<li>gcc -c MainAluno.c: Criando MainAluno.o
+<li>gcc -o MainAluno.exe HashingGen.o MainAluno.o: Criando executável
+<br/><br/>
+Substituição de Objeto que deseja utilizar
 <p> Pode trocar  <strong>MainAluno.c</strong> e <strong>MainAluno.o</strong>  por <strong>MainProfessor.c</strong> e <strong>MainProfessor.o</strong> dependendo do que você deseja compilar<br/>
 
 Se tiver no Linux Troque o <strong>MainAluno.exe_ => _MainAluno_</strong>
