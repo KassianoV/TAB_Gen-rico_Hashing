@@ -75,6 +75,7 @@ int main(){
                     printf("Nao ha um aluno com matricula %d no registro",mat);
                 break;
             case 3:
+                printf("\n");
                 leituraCompleta(nomeArq);
                 break;
             case 4:

@@ -69,10 +69,11 @@ void Inserir(char *nomeArq, int key, void *objeto, int sizeObj){
     Elemento aux=(Elemento) malloc(sizeof(struct elemento));
 
     FILE *arq = fopen(nomeArq, "r+b");
-
-    aux->item = (void*) malloc(sizeObj);
-    memcpy(aux->item, objeto, sizeObj);
-
+    printf("a\n");
+    //aux->item = (void*) malloc(sizeObj);
+    //memcpy(aux->item, objeto, sizeObj);
+    aux->item=objeto;
+    printf("a\n");
     aux->key = key;
     fseek(arq, pos*sizeof(struct elemento), SEEK_SET);
 
