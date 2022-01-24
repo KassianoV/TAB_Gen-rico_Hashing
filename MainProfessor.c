@@ -3,6 +3,30 @@
 #include "HashingGen.h"
 #include <string.h>
 
+typedef struct professor{
+    int matricula;
+    char nome[100];
+    double salario;
+}*Professor;
+
+Professor CriaProfessor(){
+    Professor pf=(Aluno) malloc(sizeof(struct professor));
+    printf("\nInforme a matricula do professor: ");
+    scanf("%d",&pf->matricula);
+    getchar();
+
+    printf("\nInforme o nome do professor: ");
+    gets(pf->nome);
+    
+    if(pf->nome[strlen(pf->nome)-1]=='\n')
+        pf->nome[strlen(pf->nome)-1]='\0';
+    
+    printf("\nInforme o salario do professor: ");
+    scanf("%d",pf->salario);
+    
+    return pf;
+}
+
 int main(){
     int mat;
     int opcao=0;
