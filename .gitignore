@@ -1,7 +1,5 @@
 .vscode
 
-*.o
-
 MainAluno
 
 HashingGen.o
