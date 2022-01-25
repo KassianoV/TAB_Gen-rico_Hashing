@@ -28,9 +28,13 @@ int hash1 (int key, int size){
     return key%size;
 }
 
+int hash2 (Elemento item, int size){
+    return item->key%size;
+}
+
 int AcharPosicao(char *nomeArq, int key,int sizeObj){
     Elemento aux;
-    int pos = hash1(aux ,N);
+    int pos = hash2(aux ,N);
     FILE *arq = fopen(nomeArq, "rb");
     fseek(arq, pos * sizeof(struct elemento), SEEK_SET);
     fread(&aux, sizeof(struct elemento), 1,arq);
