@@ -57,8 +57,6 @@ int main(){
     aluno *al=InicializaAluno(al);
     InicializaArq(nomeArq, al,sizeof(aluno));
     
-    //Professor p = (Professor) malloc (sizeof(struct professor));
-    
     while(opcao != 4){
         opcao=menu();
         switch (opcao){

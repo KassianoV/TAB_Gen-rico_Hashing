@@ -5,18 +5,15 @@
 #define N 11
 
 typedef struct elemento{ 
-    int tipo;   // Tipo 1 aluno e 2 prof
+    int tipo;   
     int key;      
     void *item;
 }*Elemento;
 
-// Ok
 void InicializaArq(char *nomeArq, void *obj, int sizeObj){
     FILE *arq = fopen(nomeArq,"wb");
     Elemento a=(Elemento) malloc(sizeof(struct elemento));
 
-    //a->item = (void*) malloc(sizeObj);
-    //memcpy(a->item, obj, sizeObj);
     a->item=obj;
     a->tipo=-1;
     a->key=-1;
@@ -55,7 +52,6 @@ void Inserir(char *nomeArq, int key, void *objeto, int sizeObj){
     printf("a\n");
     aux->item = (void*) malloc(sizeObj);
     memcpy(aux->item, objeto, sizeObj);
-    //aux->item=objeto;
     printf("a\n");
     aux->key = key;
     fseek(arq, pos*sizeof(struct elemento), SEEK_SET);
@@ -63,29 +59,9 @@ void Inserir(char *nomeArq, int key, void *objeto, int sizeObj){
     fwrite(&aux, sizeof(struct elemento),1,arq);
     fclose(arq);
 }
-/*
-int BuscarObj(char * nomeArq, int key, void *resp, int sizeObj){
-    Elemento aux;
-    FILE *arq = fopen (nomeArq, "rb");
-    int i;
-
-    for(i=0; i<N; i++){
-        fread(&aux, sizeof(struct elemento), 1, arq);
-
-        if(aux->key == key){
-            resp = (void*) malloc(sizeObj);
-            memcpy(resp, aux->item, sizeObj);
-            fclose(arq);
-            return 1;
-        }
-    }
-    fclose(arq);
-    return 0;
-}
-*/
 
 int BuscarObj(char nomeArq, int key, void*resp, int sizeObj){
-    int pos = hash(key, 20);
+    int pos = hash1(key, 20);
     int achou = 0;
     Elemento aux;
     FILE *arq = fopen(nomeArq, "rb");
@@ -105,7 +81,7 @@ int BuscarObj(char nomeArq, int key, void*resp, int sizeObj){
             return 1;
         else
             return 0;
-    }
+    
     return 0;
 }
 
