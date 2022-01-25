@@ -24,13 +24,17 @@ void InicializaArq(char *nomeArq, void *obj, int sizeObj){
     fclose(arq);
 }
 
-int hash1 (Elemento item, int size){
+int hash1 (int key, int size){
+    return key%size;
+}
+
+int hash2 (Elemento item, int size){
     return item->key%size;
 }
 
 int AcharPosicao(char *nomeArq, int key,int sizeObj){
     Elemento aux;
-    int pos = hash1(aux ,N);
+    int pos = hash2(aux ,N);
     FILE *arq = fopen(nomeArq, "rb");
     fseek(arq, pos * sizeof(struct elemento), SEEK_SET);
     fread(&aux, sizeof(struct elemento), 1,arq);
@@ -60,7 +64,7 @@ void Inserir(char *nomeArq, int key, void *objeto, int sizeObj){
     fclose(arq);
 }
 
-int BuscarObj(char nomeArq, int key, void*resp, int sizeObj){
+int BuscarObj(char *nomeArq, int key, void*resp, int sizeObj){
     int pos = hash1(key, 20);
     int achou = 0;
     Elemento aux;
@@ -85,7 +89,7 @@ int BuscarObj(char nomeArq, int key, void*resp, int sizeObj){
     return 0;
 }
 
-void leituraCompleta(char * nomeArq){
+void leituraCompleta(char *nomeArq){
     Elemento aux;
     FILE *arq = fopen(nomeArq, "rb");
     int i;
