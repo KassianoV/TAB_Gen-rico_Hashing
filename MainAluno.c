@@ -12,8 +12,7 @@ typedef struct aluno {
 
 aluno *CriaAluno(){
     aluno *al=(aluno *) malloc(sizeof(struct aluno));
-    printf("\nInforme a matricula do aluno: ");
-    scanf("%d",&al->matricula);
+    
     getchar();
 
     printf("\nInforme o nome do aluno: ");
@@ -28,6 +27,9 @@ aluno *CriaAluno(){
     if(al->email[strlen(al->email)-1]=='\n')
         al->email[strlen(al->email)-1]='\0';
     
+    printf("\nInforme a matricula do aluno: ");
+    scanf("%d",&al->matricula);
+
     printf("\nInforme o CR do aluno: ");
     scanf("%f",&al->CR);
 
@@ -45,8 +47,8 @@ int menu(){
     return opc;
 }
 
-aluno *InicializaAluno(aluno *al){
-    al=(aluno *) malloc(sizeof(aluno));
+aluno *InicializaAluno(){
+    aluno *al=(aluno *) malloc(sizeof(aluno));
 }
 
 int main(){
@@ -54,7 +56,7 @@ int main(){
     int opcao=0,aux;
     char nomeArq[13];
     strcpy(nomeArq,"registro.bin");
-    aluno *al=InicializaAluno(al);
+    aluno *al=InicializaAluno();
     InicializaArq(nomeArq, al,sizeof(aluno));
     
     while(opcao != 4){
@@ -62,14 +64,14 @@ int main(){
         switch (opcao){
             case 1:
                 al=CriaAluno();
-                Inserir(nomeArq, 0, al, sizeof(aluno));
+                Inserir(nomeArq, al->matricula, al, sizeof(aluno));
                 break;
             case 2:
                 printf("\nDigite o numero da matricula do aluno: ");
                 scanf("%d",&mat);
                 if(BuscarObj(nomeArq,mat,al,sizeof(struct aluno))==1){
                     printf("Os dados do aluno sao:\n");
-                    printf("Matricula: %d\nNome: %s\nEmail: %s\nCR: %.2f",al->matricula,al->nome,al->email,al->CR);
+                    printf("\nMatricula: %d\nNome: %s\nEmail: %s\nCR: %.2f\n",al->matricula,al->nome,al->email,al->CR);
                 }else
                     printf("Nao ha um aluno com matricula %d no registro",mat);
                 break;
